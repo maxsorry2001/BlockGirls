@@ -1,0 +1,13 @@
+{
+  "itemGroup.blockgirls": "Example Mod Tab",
+  "block.blockgirls.example_block": "Example Block",
+  "item.blockgirls.example_item": "Example Item",
+
+  "blockgirls.configuration.title": "BlockGirls Configs",
+  "blockgirls.configuration.section.blockgirls.common.toml": "BlockGirls Configs",
+  "blockgirls.configuration.section.blockgirls.common.toml.title": "BlockGirls Configs",
+  "blockgirls.configuration.items": "Item List",
+  "blockgirls.configuration.logDirtBlock": "Log Dirt Block",
+  "blockgirls.configuration.magicNumberIntroduction": "Magic Number Text",
+  "blockgirls.configuration.magicNumber": "Magic Number"
+}
