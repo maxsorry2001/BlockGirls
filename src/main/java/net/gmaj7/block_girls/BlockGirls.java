@@ -1,5 +1,7 @@
 package net.gmaj7.block_girls;
 
+import net.gmaj7.block_girls.entity.BGEntities;
+import net.gmaj7.block_girls.item.BGItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -49,6 +51,8 @@ public class BlockGirls {
         // Note that this is necessary if and only if we want *this* class (BlockGirls) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
+        BGItems.ITEM.register(modEventBus);
+        BGEntities.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
