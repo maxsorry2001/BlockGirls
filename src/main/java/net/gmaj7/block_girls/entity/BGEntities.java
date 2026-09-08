@@ -19,12 +19,12 @@ public class BGEntities {
 
     public static final Supplier<EntityType<Dirt>> DIRT =
             ENTITY_TYPES.register("dirt_girl", () -> EntityType.Builder.<Dirt>of(Dirt::new, MobCategory.MISC)
-                    .sized(0.98F, 1.98F)
+                    .sized(0.9F, 1.98F)
                     .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(BlockGirls.MODID, "dirt_girl"))));
 
     public static final Supplier<EntityType<GrassBlock>> GRASS_BLOCK =
             ENTITY_TYPES.register("grass_block_girl", () -> EntityType.Builder.<GrassBlock>of(GrassBlock::new, MobCategory.MISC)
-                    .sized(0.98F, 1.98F)
+                    .sized(0.9F, 1.98F)
                     .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(BlockGirls.MODID, "grass_block_girl"))));
 
     public static void register(IEventBus eventBus){

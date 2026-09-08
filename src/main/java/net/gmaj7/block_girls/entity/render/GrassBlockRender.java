@@ -3,6 +3,7 @@ package net.gmaj7.block_girls.entity.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.gmaj7.block_girls.BlockGirls;
 import net.gmaj7.block_girls.entity.custom.Dirt;
+import net.gmaj7.block_girls.entity.custom.GrassBlock;
 import net.gmaj7.block_girls.entity.model.BGBaseGirlModel;
 import net.gmaj7.block_girls.entity.rendeState.BGRenderState;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -12,10 +13,10 @@ import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.monster.Witch;
 
-public class DirtRender extends MobRenderer<Dirt, BGRenderState, BGBaseGirlModel> {
-    private static final Identifier TEX_LOCATION = Identifier.fromNamespaceAndPath(BlockGirls.MODID, "textures/entity/mob/dirt.png");
+public class GrassBlockRender extends MobRenderer<GrassBlock, BGRenderState, BGBaseGirlModel> {
+    private static final Identifier TEX_LOCATION = Identifier.fromNamespaceAndPath(BlockGirls.MODID, "textures/entity/mob/grass_block.png");
 
-    public DirtRender(EntityRendererProvider.Context context) {
+    public GrassBlockRender(EntityRendererProvider.Context context) {
         super(context, new BGBaseGirlModel(context.bakeLayer(BGBaseGirlModel.LAYER_LOCATION)), 0.5F);
     }
 
@@ -30,7 +31,7 @@ public class DirtRender extends MobRenderer<Dirt, BGRenderState, BGBaseGirlModel
     }
 
     @Override
-    public void extractRenderState(Dirt entity, BGRenderState state, float partialTicks) {
+    public void extractRenderState(GrassBlock entity, BGRenderState state, float partialTicks) {
         super.extractRenderState(entity, state, partialTicks);
         state.idleAnimationState.copyFrom(entity.idleAnimationState);
     }

@@ -3,9 +3,9 @@ package net.gmaj7.block_girls;
 import net.gmaj7.block_girls.entity.BGEntities;
 import net.gmaj7.block_girls.entity.custom.Dirt;
 import net.gmaj7.block_girls.entity.custom.GrassBlock;
-import net.gmaj7.block_girls.entity.model.DirtModel;
+import net.gmaj7.block_girls.entity.model.BGBaseGirlModel;
 import net.gmaj7.block_girls.entity.render.DirtRender;
-import net.minecraft.client.Minecraft;
+import net.gmaj7.block_girls.entity.render.GrassBlockRender;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -14,8 +14,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.gui.ConfigurationScreen;
-import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
@@ -29,6 +27,7 @@ public class BlockGirlsClient {
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(BGEntities.DIRT.get(), DirtRender::new);
+        EntityRenderers.register(BGEntities.GRASS_BLOCK.get(), GrassBlockRender::new);
     }
 
     @SubscribeEvent
@@ -39,6 +38,6 @@ public class BlockGirlsClient {
 
     @SubscribeEvent
     public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions event){
-        event.registerLayerDefinition(DirtModel.LAYER_LOCATION, DirtModel::createBodyLayer);
+        event.registerLayerDefinition(BGBaseGirlModel.LAYER_LOCATION, BGBaseGirlModel::createBodyLayer);
     }
 }
