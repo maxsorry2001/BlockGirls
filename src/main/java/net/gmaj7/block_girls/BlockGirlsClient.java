@@ -2,9 +2,13 @@ package net.gmaj7.block_girls;
 
 import net.gmaj7.block_girls.entity.BGEntities;
 import net.gmaj7.block_girls.entity.custom.Dirt;
+import net.gmaj7.block_girls.entity.custom.DirtPath;
+import net.gmaj7.block_girls.entity.custom.Farmland;
 import net.gmaj7.block_girls.entity.custom.GrassBlock;
 import net.gmaj7.block_girls.entity.model.BGBaseGirlModel;
+import net.gmaj7.block_girls.entity.render.DirtPathRender;
 import net.gmaj7.block_girls.entity.render.DirtRender;
+import net.gmaj7.block_girls.entity.render.FarmlandRender;
 import net.gmaj7.block_girls.entity.render.GrassBlockRender;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
@@ -28,12 +32,8 @@ public class BlockGirlsClient {
     static void onClientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(BGEntities.DIRT.get(), DirtRender::new);
         EntityRenderers.register(BGEntities.GRASS_BLOCK.get(), GrassBlockRender::new);
-    }
-
-    @SubscribeEvent
-    public static void registerAttributes(EntityAttributeCreationEvent event){
-        event.put(BGEntities.DIRT.get(), Dirt.createAttributes().build());
-        event.put(BGEntities.GRASS_BLOCK.get(), GrassBlock.createAttributes().build());
+        EntityRenderers.register(BGEntities.DIRT_PATH.get(), DirtPathRender::new);
+        EntityRenderers.register(BGEntities.FARMLAND.get(), FarmlandRender::new);
     }
 
     @SubscribeEvent

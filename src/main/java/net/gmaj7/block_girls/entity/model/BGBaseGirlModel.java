@@ -39,7 +39,11 @@ public class BGBaseGirlModel extends EntityModel<BGRenderState> implements Armed
 	protected final ModelPart left_down;
 	protected final ModelPart legs;
 	protected final ModelPart left_leg;
+	protected final ModelPart left_leg_up;
+	protected final ModelPart left_leg_down;
 	protected final ModelPart right_leg;
+	protected final ModelPart right_leg_up;
+	protected final ModelPart right_leg_down;
 
 	public BGBaseGirlModel(ModelPart root) {
         super(root);
@@ -54,7 +58,11 @@ public class BGBaseGirlModel extends EntityModel<BGRenderState> implements Armed
 		this.left_down = this.left_arm.getChild("left_down");
 		this.legs = root.getChild("legs");
 		this.left_leg = this.legs.getChild("left_leg");
+		this.left_leg_up = this.left_leg.getChild("left_leg_up");
+		this.left_leg_down = this.left_leg.getChild("left_leg_down");
 		this.right_leg = this.legs.getChild("right_leg");
+		this.right_leg_up = this.right_leg.getChild("right_leg_up");
+		this.right_leg_down = this.right_leg.getChild("right_leg_down");
 		this.idle = IDLE.get().bake(root);
 		this.walk = WALK.get().bake(root);
 	}
@@ -65,7 +73,7 @@ public class BGBaseGirlModel extends EntityModel<BGRenderState> implements Armed
 
 		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(-0.4F))
 				.texOffs(0, 16).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(56, 0).addBox(-1.5F, 2.0F, -1.5F, 3.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.0F, 0.0F));
+				.texOffs(38, 63).addBox(-1.5F, 2.0F, -1.5F, 3.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.0F, 0.0F));
 
 		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 32).addBox(-4.0F, -4.6259F, -1.5747F, 8.0F, 11.0F, 4.0F, new CubeDeformation(-0.3F))
 				.texOffs(0, 47).addBox(-4.0F, -4.6259F, -1.5747F, 8.0F, 11.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 4.6259F, -0.4253F));
@@ -108,11 +116,21 @@ public class BGBaseGirlModel extends EntityModel<BGRenderState> implements Armed
 
 		PartDefinition legs = partdefinition.addOrReplaceChild("legs", CubeListBuilder.create(), PartPose.offset(0.0F, 11.0F, 0.0F));
 
-		PartDefinition left_leg = legs.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(32, 0).addBox(2.5F, 0.0F, -1.5F, 3.0F, 13.0F, 3.0F, new CubeDeformation(0.0F))
-				.texOffs(44, 0).addBox(2.5F, 0.0F, -1.5F, 3.0F, 13.0F, 3.0F, new CubeDeformation(0.3F)), PartPose.offset(-2.0F, 0.0F, 0.0F));
+		PartDefinition left_leg = legs.addOrReplaceChild("left_leg", CubeListBuilder.create(), PartPose.offset(-2.0F, 0.0F, 0.0F));
 
-		PartDefinition right_leg = legs.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(44, 16).addBox(-5.5F, 0.0F, -1.5F, 3.0F, 13.0F, 3.0F, new CubeDeformation(0.3F))
-				.texOffs(32, 16).addBox(-5.5F, 0.0F, -1.5F, 3.0F, 13.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(2.0F, 0.0F, 0.0F));
+		PartDefinition left_leg_up = left_leg.addOrReplaceChild("left_leg_up", CubeListBuilder.create().texOffs(32, 0).addBox(2.5F, 0.0F, -1.5F, 3.0F, 7.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(56, 0).addBox(2.5F, 0.0F, -1.5F, 3.0F, 7.0F, 3.0F, new CubeDeformation(0.3F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+
+		PartDefinition left_leg_down = left_leg.addOrReplaceChild("left_leg_down", CubeListBuilder.create().texOffs(44, 0).addBox(2.5F, 7.0F, -1.5F, 3.0F, 6.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(68, 0).addBox(2.5F, 7.0F, -1.5F, 3.0F, 6.0F, 3.0F, new CubeDeformation(0.3F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+
+		PartDefinition right_leg = legs.addOrReplaceChild("right_leg", CubeListBuilder.create(), PartPose.offset(2.0F, 0.0F, 0.0F));
+
+		PartDefinition right_leg_up = right_leg.addOrReplaceChild("right_leg_up", CubeListBuilder.create().texOffs(32, 16).addBox(-5.5F, 0.0F, -1.5F, 3.0F, 7.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(56, 16).addBox(-5.5F, 0.0F, -1.5F, 3.0F, 7.0F, 3.0F, new CubeDeformation(0.3F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+
+		PartDefinition right_leg_down = right_leg.addOrReplaceChild("right_leg_down", CubeListBuilder.create().texOffs(44, 16).addBox(-5.5F, 7.0F, -1.5F, 3.0F, 6.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(68, 16).addBox(-5.5F, 7.0F, -1.5F, 3.0F, 6.0F, 3.0F, new CubeDeformation(0.3F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 128, 128);
 	}

@@ -2,6 +2,8 @@ package net.gmaj7.block_girls.entity;
 
 import net.gmaj7.block_girls.BlockGirls;
 import net.gmaj7.block_girls.entity.custom.Dirt;
+import net.gmaj7.block_girls.entity.custom.DirtPath;
+import net.gmaj7.block_girls.entity.custom.Farmland;
 import net.gmaj7.block_girls.entity.custom.GrassBlock;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -26,6 +28,16 @@ public class BGEntities {
             ENTITY_TYPES.register("grass_block_girl", () -> EntityType.Builder.<GrassBlock>of(GrassBlock::new, MobCategory.MISC)
                     .sized(0.9F, 1.98F)
                     .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(BlockGirls.MODID, "grass_block_girl"))));
+
+    public static final Supplier<EntityType<Farmland>> FARMLAND =
+            ENTITY_TYPES.register("farmland_girl", () -> EntityType.Builder.<Farmland>of(Farmland::new, MobCategory.MISC)
+                    .sized(0.9F, 1.98F)
+                    .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(BlockGirls.MODID, "farmland_girl"))));
+
+    public static final Supplier<EntityType<DirtPath>> DIRT_PATH =
+            ENTITY_TYPES.register("dirt_path_girl", () -> EntityType.Builder.<DirtPath>of(DirtPath::new, MobCategory.MISC)
+                    .sized(0.9F, 1.98F)
+                    .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(BlockGirls.MODID, "dirt_path_girl"))));
 
     public static void register(IEventBus eventBus){
         ENTITY_TYPES.register(eventBus);}

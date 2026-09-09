@@ -1,7 +1,13 @@
 package net.gmaj7.block_girls;
 
 import net.gmaj7.block_girls.entity.BGEntities;
+import net.gmaj7.block_girls.entity.custom.Dirt;
+import net.gmaj7.block_girls.entity.custom.DirtPath;
+import net.gmaj7.block_girls.entity.custom.Farmland;
+import net.gmaj7.block_girls.entity.custom.GrassBlock;
 import net.gmaj7.block_girls.item.BGItems;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -73,5 +79,17 @@ public class BlockGirls {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
 
+    }
+
+    @EventBusSubscriber(modid = MODID)
+    public static class DataRegister{
+
+        @SubscribeEvent
+        public static void registerAttributes(EntityAttributeCreationEvent event){
+            event.put(BGEntities.DIRT.get(), Dirt.createAttributes().build());
+            event.put(BGEntities.GRASS_BLOCK.get(), GrassBlock.createAttributes().build());
+            event.put(BGEntities.DIRT_PATH.get(), DirtPath.createAttributes().build());
+            event.put(BGEntities.FARMLAND.get(), Farmland.createAttributes().build());
+        }
     }
 }
