@@ -3,7 +3,7 @@ package net.gmaj7.block_girls.entity.render;
 import net.gmaj7.block_girls.BlockGirls;
 import net.gmaj7.block_girls.entity.custom.Dirt;
 import net.gmaj7.block_girls.entity.model.BGBaseGirlModel;
-import net.gmaj7.block_girls.entity.rendeState.BGRenderState;
+import net.gmaj7.block_girls.entity.renderState.BGRenderState;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.Identifier;
 

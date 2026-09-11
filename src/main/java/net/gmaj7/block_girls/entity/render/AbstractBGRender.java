@@ -3,7 +3,7 @@ package net.gmaj7.block_girls.entity.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.gmaj7.block_girls.entity.custom.AbstractBlockGirl;
 import net.gmaj7.block_girls.entity.model.BGBaseGirlModel;
-import net.gmaj7.block_girls.entity.rendeState.BGRenderState;
+import net.gmaj7.block_girls.entity.renderState.BGRenderState;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

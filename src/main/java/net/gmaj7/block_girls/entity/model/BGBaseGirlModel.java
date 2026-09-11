@@ -5,7 +5,7 @@ package net.gmaj7.block_girls.entity.model;// Made with Blockbench 5.1.4
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.gmaj7.block_girls.BlockGirls;
-import net.gmaj7.block_girls.entity.rendeState.BGRenderState;
+import net.gmaj7.block_girls.entity.renderState.BGRenderState;
 import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.ArmedModel;
 import net.minecraft.client.model.EntityModel;
