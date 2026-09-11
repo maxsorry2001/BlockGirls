@@ -1,5 +1,7 @@
 package net.gmaj7.block_girls.entity.custom;
 
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -14,6 +16,7 @@ import org.jspecify.annotations.Nullable;
 public abstract class AbstractBlockGirl extends PathfinderMob implements OwnableEntity {
     protected @Nullable EntityReference<LivingEntity> owner;
     public final AnimationState idleAnimationState = new AnimationState();
+    public final AnimationState uniqueAnimationState = new AnimationState();
     protected int idleAnimationTimeOut = 0;
 
     protected AbstractBlockGirl(EntityType<? extends PathfinderMob> type, Level level) {
@@ -71,5 +74,11 @@ public abstract class AbstractBlockGirl extends PathfinderMob implements Ownable
     @Override
     public @Nullable EntityReference<LivingEntity> getOwnerReference() {
         return owner;
+    }
+
+    @Override
+    protected InteractionResult mobInteract(Player player, InteractionHand hand) {
+        uniqueAnimationState.start(tickCount);
+        return InteractionResult.SUCCESS;
     }
 }

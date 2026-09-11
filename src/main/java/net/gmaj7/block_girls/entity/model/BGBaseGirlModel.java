@@ -25,6 +25,7 @@ public class BGBaseGirlModel extends EntityModel<BGRenderState> implements Armed
 
 	protected final KeyframeAnimation idle;
 	protected final KeyframeAnimation walk;
+	protected final KeyframeAnimation unique;
 
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath(BlockGirls.MODID, "base_girl"), "main");
@@ -45,7 +46,7 @@ public class BGBaseGirlModel extends EntityModel<BGRenderState> implements Armed
 	protected final ModelPart right_leg_up;
 	protected final ModelPart right_leg_down;
 
-	public BGBaseGirlModel(ModelPart root) {
+	public BGBaseGirlModel(ModelPart root, String uniqueSpace) {
         super(root);
         this.head = root.getChild("head");
 		this.body = root.getChild("body");
@@ -65,6 +66,7 @@ public class BGBaseGirlModel extends EntityModel<BGRenderState> implements Armed
 		this.right_leg_down = this.right_leg.getChild("right_leg_down");
 		this.idle = IDLE.get().bake(root);
 		this.walk = WALK.get().bake(root);
+		this.unique = Model.getAnimation(Identifier.fromNamespaceAndPath(BlockGirls.MODID, "unique/" + uniqueSpace)).get().bake(root);
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -72,10 +74,10 @@ public class BGBaseGirlModel extends EntityModel<BGRenderState> implements Armed
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(-0.4F))
-				.texOffs(0, 16).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(38, 63).addBox(-1.5F, 2.0F, -1.5F, 3.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.0F, 0.0F));
+				.texOffs(0, 16).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.0F, 0.0F));
 
-		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 32).addBox(-4.0F, -4.6259F, -1.5747F, 8.0F, 11.0F, 4.0F, new CubeDeformation(-0.3F))
+		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(38, 63).addBox(-1.5F, -6.6259F, -1.0747F, 3.0F, 3.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 32).addBox(-4.0F, -4.6259F, -1.5747F, 8.0F, 11.0F, 4.0F, new CubeDeformation(-0.3F))
 				.texOffs(0, 47).addBox(-4.0F, -4.6259F, -1.5747F, 8.0F, 11.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 4.6259F, -0.4253F));
 
 		PartDefinition skirt_mix4_r1 = body.addOrReplaceChild("skirt_mix4_r1", CubeListBuilder.create().texOffs(21, 79).addBox(-0.5F, -2.5F, -0.75F, 2.0F, 5.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(4.0F, 7.8741F, 3.6753F, 0.6109F, 0.7854F, 0.0F));
@@ -142,6 +144,7 @@ public class BGBaseGirlModel extends EntityModel<BGRenderState> implements Armed
 		this.head.yRot = state.yRot * ((float)Math.PI / 180F);
 
 		this.idle.apply(state.idleAnimationState, state.ageInTicks, 1F);
+		this.unique.apply(state.uniqueAnimationState, state.ageInTicks, 2F);
 		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 1, 1);
 	}
 

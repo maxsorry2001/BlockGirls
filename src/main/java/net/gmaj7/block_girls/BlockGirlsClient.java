@@ -1,10 +1,6 @@
 package net.gmaj7.block_girls;
 
 import net.gmaj7.block_girls.entity.BGEntities;
-import net.gmaj7.block_girls.entity.custom.Dirt;
-import net.gmaj7.block_girls.entity.custom.DirtPath;
-import net.gmaj7.block_girls.entity.custom.Farmland;
-import net.gmaj7.block_girls.entity.custom.GrassBlock;
 import net.gmaj7.block_girls.entity.model.BGBaseGirlModel;
 import net.gmaj7.block_girls.entity.render.DirtPathRender;
 import net.gmaj7.block_girls.entity.render.DirtRender;
@@ -18,7 +14,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = BlockGirls.MODID, dist = Dist.CLIENT)

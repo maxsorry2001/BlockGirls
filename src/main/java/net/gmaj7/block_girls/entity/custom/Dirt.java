@@ -1,11 +1,11 @@
 package net.gmaj7.block_girls.entity.custom;
 
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
 
 public class Dirt extends AbstractBlockGirl {
     public Dirt(EntityType<? extends PathfinderMob> type, Level level) {

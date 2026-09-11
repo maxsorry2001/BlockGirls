@@ -5,4 +5,5 @@ import net.minecraft.world.entity.AnimationState;
 
 public class BGRenderState extends LivingEntityRenderState {
     public final AnimationState idleAnimationState = new AnimationState();
+    public final AnimationState uniqueAnimationState = new AnimationState();
 }
