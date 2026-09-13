@@ -3,10 +3,7 @@ package net.gmaj7.block_girls.entity.custom;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
@@ -79,6 +76,11 @@ public abstract class AbstractBlockGirl extends PathfinderMob implements Ownable
     @Override
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
         uniqueAnimationState.start(tickCount);
+        this.lookAt(player, 10, 10);
+        for (WrappedGoal goal : this.goalSelector.getAvailableGoals()){
+            if(goal.getGoal() instanceof WaterAvoidingRandomStrollGoal)
+                goal.getGoal().stop();
+        }
         return InteractionResult.SUCCESS;
     }
 }

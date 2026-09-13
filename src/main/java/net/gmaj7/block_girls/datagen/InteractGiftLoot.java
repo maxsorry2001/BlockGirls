@@ -11,7 +11,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.function.BiConsumer;
 
@@ -41,5 +43,13 @@ public record InteractGiftLoot(HolderLookup.Provider provider) implements LootTa
                         .add(LootItem.lootTableItem(Items.PEONY).setWeight(2))
                         .add(LootItem.lootTableItem(Items.CLOSED_EYEBLOSSOM).setWeight(1))
                         .add(LootItem.lootTableItem(Items.OPEN_EYEBLOSSOM).setWeight(1))));
+        output.accept(ResourceKeys.FARMLAND_GIFT,
+                LootTable.lootTable().withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(Items.BREAD).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))).setWeight(1))
+                        .add(LootItem.lootTableItem(Items.CARROT).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F))).setWeight(1))
+                        .add(LootItem.lootTableItem(Items.BAKED_POTATO).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F))).setWeight(1))
+                        .add(LootItem.lootTableItem(Items.MELON_SLICE).apply(SetItemCountFunction.setCount(UniformGenerator.between(5.0F, 9.0F))).setWeight(1))
+                        .add(LootItem.lootTableItem(Items.PUMPKIN_PIE).setWeight(1))));
     }
 }

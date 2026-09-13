@@ -8,6 +8,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -41,6 +43,7 @@ public class GrassBlock extends AbstractBlockGirl{
             List<ItemStack> items = lootTable.getRandomItems(
                     new LootParams.Builder((ServerLevel) level()).withParameter(LootContextParams.ORIGIN, position()).withParameter(LootContextParams.THIS_ENTITY, this).create(LootContextParamSets.GIFT)
             );
+            BehaviorUtils.throwItem(this, items.get(0), player.position().add(0, 1, 0));
         }
         return super.mobInteract(player, hand);
     }
